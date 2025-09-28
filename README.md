@@ -16,8 +16,21 @@ This repository now contains the initial Next.js/Tailwind application scaffold b
 2. **Create environment file**
 
    Copy `.env.example` to `.env.local` and keep the provided `MONGODB_URI` (or replace with your own cluster). Set `NEXTAUTH_SECRET` once authentication is introduced.
+   The prototype dashboards expect demo identifiers—adjust `DEMO_DONOR_ID` and `DEMO_ORGANIZATION_ID` if you seed different data.
+
+3. **Load sample data (optional but recommended)**
+
+   ```bash
+   npm run seed
+   ```
+
+   The script populates MongoDB with a donor, beneficiaries, organizations, inventory snapshots, consent requests, and an outstanding emergency override so the dashboards render realistic metrics.
+
+4. **Run the development server**
+=======
 
 3. **Run the development server**
+
 
    ```bash
    npm run dev
@@ -25,7 +38,11 @@ This repository now contains the initial Next.js/Tailwind application scaffold b
 
    Visit [http://localhost:3000](http://localhost:3000) to explore the landing page, roadmap overview, and documentation portal.
 
+
+5. **Health check API**
+=======
 4. **Health check API**
+
 
    The `/api/health` endpoint attempts a lightweight connection to MongoDB and returns the list of collections to verify connectivity.
 
@@ -43,6 +60,17 @@ Early domain endpoints now cover the core Phase 2 ledger scenarios. They expect 
 | `/api/inventory/:organizationId` | `GET` | View real-time credit holdings by blood type for an organization. |
 | `/api/exchanges` | `POST` | Log inter-organization `(bloodType, credit)` exchange proposals. |
 
+
+## Workspace prototypes
+
+- `/workspace` highlights the role-based dashboards planned for Phase 2.
+- `/workspace/admin` surfaces compliance metrics and emergency oversight tasks.
+- `/workspace/organization` previews inventory tracking and exchange guidance.
+- `/workspace/donor` shows donor credit history, consent prompts, and emergency debt visibility.
+
+Seeded MongoDB data now powers these views. If collections are empty, the UI falls back to friendly prompts explaining how to populate the database.
+
+=======
 ## Documentation
 
 - [Architecture Overview](docs/architecture.md)

@@ -50,6 +50,9 @@ B+ive is a blood-credit exchange network that enables donors, recipients, hospit
 
 ## Domain Model Overview
 - **User**: Individual donor/recipient with verified identity, blood group, contact details, consent preferences, credit balance, emergency contacts.
+- **Organization**: Hospital/blood bank with licensing information, service locations, inventory, audit logs, and per-blood-type credit balances for inter-org exchange.
+=======
+
 - **Admin**: Platform superuser responsible for onboarding organizations and government entities, managing policies.
 - **Government Entity**: Regulator with visibility into all transactions, authority to authorize emergency draws and compliance audits.
 - **Credit Transaction**: Records credit earning (donation), debit (withdrawal), transfers, and emergency overrides.
@@ -105,6 +108,10 @@ rectangle "B+ive Platform" {
   usecase "Request blood using credits" as UC6
   usecase "Handle emergency request" as UC7
   usecase "Audit transaction history" as UC8
+  usecase "View personal donation history" as UC9
+  usecase "Manage blood inventory" as UC10
+  }
+=======
 
 
 Admin --> UC1
