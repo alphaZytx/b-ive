@@ -50,7 +50,6 @@ B+ive is a blood-credit exchange network that enables donors, recipients, hospit
 
 ## Domain Model Overview
 - **User**: Individual donor/recipient with verified identity, blood group, contact details, consent preferences, credit balance, emergency contacts.
-- **Organization**: Hospital/blood bank with licensing information, service locations, inventory, audit logs, and per-blood-type credit balances for inter-org exchange.
 - **Admin**: Platform superuser responsible for onboarding organizations and government entities, managing policies.
 - **Government Entity**: Regulator with visibility into all transactions, authority to authorize emergency draws and compliance audits.
 - **Credit Transaction**: Records credit earning (donation), debit (withdrawal), transfers, and emergency overrides.
@@ -106,9 +105,7 @@ rectangle "B+ive Platform" {
   usecase "Request blood using credits" as UC6
   usecase "Handle emergency request" as UC7
   usecase "Audit transaction history" as UC8
-  usecase "View personal donation history" as UC9
-  usecase "Manage blood inventory" as UC10
-  }
+
 
 Admin --> UC1
 Admin --> UC2
@@ -162,6 +159,38 @@ The diagram highlights that only organizations record donations and manage inven
    - Introduce analytics, notification automation, and mobile-friendly PWA features.
    - Optimize performance, add caching (Redis), and consider microservice extraction if necessary.
    - Explore advanced collaboration features (marketplace-style exchange matching, predictive inventory analytics).
+
+=======
+
+User --> UC4
+User --> UC5
+User --> UC6
+User --> UC8
+@enduml
+```
+
+## Component Responsibilities
+- **Frontend Applications**: Distinct dashboards tailored to each role via RBAC. The public landing page features a 3D animated blood droplet (Three.js or Lottie animation) reinforcing the brand.
+- **API Layer**: Validates requests, enforces consent, and orchestrates workflows. Uses JWT or session tokens with role/permission claims.
+- **Ledger Service**: Ensures credits cannot be double-spent; exposes transactional endpoints to increment/decrement balances with audit trails.
+- **Notification Service**: Sends OTPs, consent prompts, and emergency alerts through email/SMS/push notifications.
+- **Analytics & Reporting**: Aggregates data for government oversight (donation trends, organization performance, compliance metrics).
+
+## Development Roadmap
+1. **Phase 1 – Discovery & Prototyping**
+   - Finalize requirements, user journeys, and data model.
+   - Build low-fidelity wireframes and validate with stakeholders.
+   - Implement core authentication and role management.
+2. **Phase 2 – MVP**
+   - Implement donation recording, credit ledger, consent workflow, and basic dashboards for all roles.
+   - Integrate MongoDB Atlas and deploy initial version on Vercel (Next.js) or Render (NestJS API).
+3. **Phase 3 – Compliance & Scaling**
+   - Add audit logging, government reporting dashboards, emergency override workflows.
+   - Integrate identity verification services and implement encryption at rest/in transit.
+4. **Phase 4 – Enhancements**
+   - Introduce analytics, notification automation, and mobile-friendly PWA features.
+   - Optimize performance, add caching (Redis), and consider microservice extraction if necessary.
+
 
 ## Future-Proofing Considerations
 - Design services with clean interfaces to allow migration to microservices or serverless functions as traffic grows.

@@ -1,5 +1,6 @@
 # B+ive
 
+
 B+ive is a consent-first blood-credit exchange network that synchronizes donors, recipients, hospitals, administrators, and government authorities. Credits earned by donating blood can be redeemed later by the donor or transferred—with explicit consent—to beneficiaries anywhere in the network.
 
 This repository now contains the initial Next.js/Tailwind application scaffold backed by MongoDB. Subsequent phases will layer in authentication, the credit ledger, consent workflows, emergency overrides, and observability per the architecture playbook.
@@ -56,3 +57,9 @@ Early domain endpoints now cover the core Phase 2 ledger scenarios. They expect 
 ## Roadmap alignment
 
 The landing page highlights the phased delivery plan. With the Phase 1 discovery outputs committed, the codebase now includes the foundational Phase 2 API layer described above. Upcoming work will harden authentication, surface these capabilities through role-aware dashboards, and expand auditing/observability tooling.
+=======
+A conceptual platform for a blood-credit exchange network that connects donors, recipients, hospitals, and government authorities. The system allows users to earn and redeem blood credits, request emergency assistance, and maintain full transparency for regulators.
+
+## Documentation
+- [Architecture Overview](docs/architecture.md)
+
