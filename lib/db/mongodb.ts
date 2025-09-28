@@ -31,6 +31,7 @@ export async function getMongoClient() {
 }
 
 export async function getDatabase(dbName = config.mongodbDbName || "bive") {
+
   const mongoClient = await getMongoClient();
   return mongoClient.db(dbName);
 }

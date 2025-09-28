@@ -14,7 +14,7 @@ This repository now contains the initial Next.js/Tailwind application scaffold b
 
 2. **Create environment file**
 
-   Copy `.env.example` to `.env.local` and keep the provided `MONGODB_URI` (or replace with your own cluster). If your Atlas project uses a different logical database name, set `MONGODB_DB_NAME` (defaults to `bive`). Set `NEXTAUTH_SECRET` once authentication is introduced.
+   Copy `.env.example` to `.env.local` and keep the provided `MONGODB_URI` (or replace with your own cluster). Set `NEXTAUTH_SECRET` once authentication is introduced.
    The prototype dashboards expect demo identifiers—adjust `DEMO_DONOR_ID` and `DEMO_ORGANIZATION_ID` if you seed different data.
 
 3. **Load sample data (optional but recommended)**
@@ -51,6 +51,7 @@ Early domain endpoints now cover the core Phase 2 ledger scenarios. They expect 
 | `/api/inventory/:organizationId` | `GET` | View real-time credit holdings by blood type for an organization. |
 | `/api/exchanges` | `POST` | Log inter-organization `(bloodType, credit)` exchange proposals. |
 
+
 ## Workspace prototypes
 
 - `/workspace` highlights the role-based dashboards planned for Phase 2.
@@ -58,6 +59,7 @@ Early domain endpoints now cover the core Phase 2 ledger scenarios. They expect 
 - `/workspace/organization` previews inventory tracking and exchange guidance.
 - `/workspace/donor` shows donor credit history, consent prompts, and emergency debt visibility.
 - `/workspace/actions` provides transaction forms to exercise the donation, consent, emergency, and exchange APIs.
+
 
 Seeded MongoDB data now powers these views. If collections are empty, the UI falls back to friendly prompts explaining how to populate the database.
 
@@ -75,3 +77,9 @@ Seeded MongoDB data now powers these views. If collections are empty, the UI fal
 ## Roadmap alignment
 
 The landing page highlights the phased delivery plan. With the Phase 1 discovery outputs committed, the codebase now includes the foundational Phase 2 API layer described above. Upcoming work will harden authentication, surface these capabilities through role-aware dashboards, and expand auditing/observability tooling.
+
+A conceptual platform for a blood-credit exchange network that connects donors, recipients, hospitals, and government authorities. The system allows users to earn and redeem blood credits, request emergency assistance, and maintain full transparency for regulators.
+
+## Documentation
+- [Architecture Overview](docs/architecture.md)
+
