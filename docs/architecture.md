@@ -159,6 +159,7 @@ The diagram highlights that only organizations record donations and manage inven
    - Introduce analytics, notification automation, and mobile-friendly PWA features.
    - Optimize performance, add caching (Redis), and consider microservice extraction if necessary.
    - Explore advanced collaboration features (marketplace-style exchange matching, predictive inventory analytics).
+
 =======
 
 User --> UC4
