@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  background-color: #0f172a;
+}
+
+body {
+  @apply bg-slate-950 text-slate-100 min-h-screen antialiased;
+}
+
+a {
+  @apply text-brand-accent underline-offset-4 hover:underline;
+}
+
+.gradient-overlay {
+  background: radial-gradient(circle at top, rgba(255, 204, 213, 0.3), transparent 60%),
+              radial-gradient(circle at bottom, rgba(193, 18, 31, 0.4), transparent 55%);
+}
