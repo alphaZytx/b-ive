@@ -1,7 +1,8 @@
 import { randomUUID } from "crypto";
 import type { ClientSession, Db } from "mongodb";
 
-import { getMongoClient } from "@/lib/db/mongodb";
+import { getDatabase, getMongoClient } from "@/lib/db/mongodb";
+
 import {
   consentDecisionSchema,
   consentRequestSchema,
@@ -31,8 +32,8 @@ type CollectionMap = {
 };
 
 async function withCollections() {
-  const client = await getMongoClient();
-  const db = client.db("bive");
+  const db = await getDatabase();
+
   const collections: CollectionMap = {
     users: db.collection("users"),
     transactions: db.collection("transactions"),
@@ -154,8 +155,8 @@ export async function createConsentRequest(input: ConsentRequestInput) {
     requestedAt
   };
 
-  const client = await getMongoClient();
-  const db = client.db("bive");
+  const db = await getDatabase();
+
   const { insertedId } = await db.collection("consentRequests").insertOne(document);
 
   return { requestId: insertedId.toString(), status: document.status, requestedAt };
@@ -373,16 +374,16 @@ export async function createExchangeProposal(input: ExchangeProposalInput) {
     proposedAt
   };
 
-  const client = await getMongoClient();
-  const db = client.db("bive");
+  const db = await getDatabase();
+
   await db.collection("exchanges").insertOne(doc);
 
   return { exchangeId, status: doc.status, proposedAt };
 }
 
 export async function getLedgerSummary(userId: string) {
-  const client = await getMongoClient();
-  const db = client.db("bive");
+  const db = await getDatabase();
+
 
   const projection = {
     _id: 0,
@@ -412,8 +413,8 @@ export async function getLedgerSummary(userId: string) {
 }
 
 export async function getInventoryForOrganization(organizationId: string) {
-  const client = await getMongoClient();
-  const db = client.db("bive");
+  const db = await getDatabase();
+
 
   const inventory = await db
     .collection("inventory")

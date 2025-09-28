@@ -7,7 +7,8 @@ const links = [
   { href: "/workspace", label: "Overview" },
   { href: "/workspace/admin", label: "Admin" },
   { href: "/workspace/organization", label: "Organization" },
-  { href: "/workspace/donor", label: "Donor" }
+  { href: "/workspace/donor", label: "Donor" },
+  { href: "/workspace/actions", label: "Actions" }
 ];
 
 export function WorkspaceNav() {

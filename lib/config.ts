@@ -1,11 +1,10 @@
 export const config = {
   mongodbUri: process.env.MONGODB_URI || "",
+  mongodbDbName: process.env.MONGODB_DB_NAME || "bive",
   demo: {
     donorId: process.env.DEMO_DONOR_ID || "user-donor-001",
     organizationId: process.env.DEMO_ORGANIZATION_ID || "org-sunrise"
   }
-=======
-  mongodbUri: process.env.MONGODB_URI || ""
 };
 
 export function assertConfig() {

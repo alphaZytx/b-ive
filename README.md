@@ -1,6 +1,5 @@
 # B+ive
 
-
 B+ive is a consent-first blood-credit exchange network that synchronizes donors, recipients, hospitals, administrators, and government authorities. Credits earned by donating blood can be redeemed later by the donor or transferred—with explicit consent—to beneficiaries anywhere in the network.
 
 This repository now contains the initial Next.js/Tailwind application scaffold backed by MongoDB. Subsequent phases will layer in authentication, the credit ledger, consent workflows, emergency overrides, and observability per the architecture playbook.
@@ -27,10 +26,6 @@ This repository now contains the initial Next.js/Tailwind application scaffold b
    The script populates MongoDB with a donor, beneficiaries, organizations, inventory snapshots, consent requests, and an outstanding emergency override so the dashboards render realistic metrics.
 
 4. **Run the development server**
-=======
-
-3. **Run the development server**
-
 
    ```bash
    npm run dev
@@ -38,11 +33,7 @@ This repository now contains the initial Next.js/Tailwind application scaffold b
 
    Visit [http://localhost:3000](http://localhost:3000) to explore the landing page, roadmap overview, and documentation portal.
 
-
 5. **Health check API**
-=======
-4. **Health check API**
-
 
    The `/api/health` endpoint attempts a lightweight connection to MongoDB and returns the list of collections to verify connectivity.
 
@@ -67,10 +58,11 @@ Early domain endpoints now cover the core Phase 2 ledger scenarios. They expect 
 - `/workspace/admin` surfaces compliance metrics and emergency oversight tasks.
 - `/workspace/organization` previews inventory tracking and exchange guidance.
 - `/workspace/donor` shows donor credit history, consent prompts, and emergency debt visibility.
+- `/workspace/actions` provides transaction forms to exercise the donation, consent, emergency, and exchange APIs.
+
 
 Seeded MongoDB data now powers these views. If collections are empty, the UI falls back to friendly prompts explaining how to populate the database.
 
-=======
 ## Documentation
 
 - [Architecture Overview](docs/architecture.md)
@@ -85,7 +77,7 @@ Seeded MongoDB data now powers these views. If collections are empty, the UI fal
 ## Roadmap alignment
 
 The landing page highlights the phased delivery plan. With the Phase 1 discovery outputs committed, the codebase now includes the foundational Phase 2 API layer described above. Upcoming work will harden authentication, surface these capabilities through role-aware dashboards, and expand auditing/observability tooling.
-=======
+
 A conceptual platform for a blood-credit exchange network that connects donors, recipients, hospitals, and government authorities. The system allows users to earn and redeem blood credits, request emergency assistance, and maintain full transparency for regulators.
 
 ## Documentation

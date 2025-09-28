@@ -1,6 +1,7 @@
 import { randomUUID } from "crypto";
 
-import { getMongoClient } from "@/lib/db/mongodb";
+import { getDatabase } from "@/lib/db/mongodb";
+
 import { getLedgerSummary } from "@/lib/domain/services";
 
 import type {
@@ -102,8 +103,8 @@ function buildTask(partial: TaskItem): TaskItem {
 
 export async function getAdminDashboardSnapshot(): Promise<AdminDashboardSnapshot> {
   try {
-    const client = await getMongoClient();
-    const db = client.db("bive");
+    const db = await getDatabase();
+
 
     const organizations = db.collection("organizations");
     const consentRequests = db.collection("consentRequests");
@@ -493,7 +494,6 @@ export async function getDonorDashboardSnapshot(userId: string): Promise<DonorDa
     const { user, recentTransactions } = await getLedgerSummary(userId);
     const client = await getMongoClient();
     const db = client.db("bive");
-
     const consentRequests = await db
       .collection("consentRequests")
       .find({ creditOwnerId: userId, status: "PENDING" })

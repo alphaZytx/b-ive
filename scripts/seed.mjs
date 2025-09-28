@@ -2,6 +2,8 @@ import { randomUUID } from "crypto";
 import { MongoClient } from "mongodb";
 
 const uri = process.env.MONGODB_URI;
+const dbName = process.env.MONGODB_DB_NAME || "bive";
+
 
 if (!uri) {
   console.error("Missing MONGODB_URI. Set it before running the seed script.");
@@ -376,7 +378,8 @@ const exchanges = [
 
 async function seed() {
   await client.connect();
-  const db = client.db("bive");
+  const db = client.db(dbName);
+
 
   await Promise.all([
     db.collection("users").createIndex({ userId: 1 }, { unique: true }),
