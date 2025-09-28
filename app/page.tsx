@@ -39,6 +39,13 @@ export default function HomePage() {
               Open workspace prototype
               <span aria-hidden>⤳</span>
             </Link>
+            <a
+              href="https://www.figma.com/file/"
+              className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3 text-base font-semibold text-white transition hover:bg-white/10"
+            >
+              Watch concept demo
+              <span aria-hidden>⏯</span>
+            </a>
           </div>
 
           <dl className="grid grid-cols-1 gap-6 sm:grid-cols-3">

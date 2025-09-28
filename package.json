@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "seed": "node scripts/seed.mjs"
+    "lint": "next lint"
   },
   "dependencies": {
     "mongodb": "^6.7.0",
